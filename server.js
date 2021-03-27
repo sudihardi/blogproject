@@ -21,6 +21,9 @@ app.get('/', (req, res) => {
     res.send('Welcome home!')
 });
 
+// Require Blogs routes
+require('./app/routes/blog.routes.js')(app);
+
 // Listen for requests
 app.listen(3000, () => {
     console.log('Server is listening on port 3000!');
