@@ -1,4 +1,17 @@
 const express = require('express');
+const dbConfig = require('./config/development.config.js');
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+// Connecting to database
+MongoClient.connect(dbConfig.url, { useUnifiedTopology: true }, {
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Successfully connected to database!");
+}).catch(err => {
+    console.log("Could not connect to the database. Existing now...", err);
+    process.exit();
+})
 
 // create express app
 const app = express();
