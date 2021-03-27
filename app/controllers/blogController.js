@@ -1,4 +1,4 @@
-const Blog = require('../models/blog.model.js');
+const Blog = require('../models/blogModel.js');
 
 // Create and save a new Blog
 exports.create = (req, res) => {
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 }
 
 // Get all Blogs
-exports.getAll = (req, ses) => {
+exports.getAll = (req, res) => {
     Blog.find()
         .then(oBlog => {
             res.send(oBlog);

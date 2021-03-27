@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const blogs = require('../controllers/blog.controller.js');
+    const blogs = require('../controllers/blogController.js');
 
     // create a new blog
     app.post('/blogs', blogs.create);

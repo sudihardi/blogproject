@@ -1,20 +1,30 @@
 const express = require('express');
-const dbConfig = require('./config/development.config.js');
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-
-// Connecting to database
-MongoClient.connect(dbConfig.url, { useUnifiedTopology: true }, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Successfully connected to database!");
-}).catch(err => {
-    console.log("Could not connect to the database. Existing now...", err);
-    process.exit();
-})
+const bodyParser = require('body-parser');
 
 // create express app
 const app = express();
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json())
+
+// Configuring the database
+const dbConfig = require('./config/developmentConfig.js');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+// Connecting to the database
+mongoose.connect(dbConfig.url, {
+    useNewUrlParser: true, useUnifiedTopology: true 
+}).then(() => {
+    console.log("Successfully connected to database");
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...', err);
+    process.exit();
+});
 
 // define a simple route
 app.get('/', (req, res) => {
@@ -22,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 // Require Blogs routes
-require('./app/routes/blog.routes.js')(app);
+require('./app/routes/blogRoutes.js')(app);
 
 // Listen for requests
 app.listen(3000, () => {
