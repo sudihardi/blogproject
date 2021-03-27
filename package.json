@@ -1,0 +1,24 @@
+{
+  "name": "blogproject",
+  "version": "1.0.0",
+  "description": "WELCOME TO BLOGPROJECT REPO!",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudihardi/blogproject.git"
+  },
+  "author": "Sudi Hardi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudihardi/blogproject/issues"
+  },
+  "homepage": "https://github.com/sudihardi/blogproject#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2",
+    "nodemon": "^2.0.7"
+  }
+}
