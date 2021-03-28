@@ -56,13 +56,10 @@ exports.getById = (req, res) => {
                     message: "Blog not exist with id" + req.params.blogId
                 })
             }
-            return res.status(500).send({
-                message: "Error retrieving blog with id" + req.params.blogId
-            })
         })
 }
 
-// Update a nlog by the blogId
+// Update a Blog by the blogId
 exports.update = (req, res) => {
 
 // Validate request because in the model we required the blogName
@@ -73,7 +70,7 @@ if(!req.body.blogName) {
 }
 
 // Find blog and update it
-Blog.findByIdAndUpdate(req.params.blogId, {
+Blog.findOneAndUpdate(req.params.blogId, {
     blogName: req.body.blogName,
     blogDescription: req.body.blogDescription
 }, {new: true})
@@ -90,9 +87,6 @@ Blog.findByIdAndUpdate(req.params.blogId, {
             message: "Blog does not exist with blogId" + req.params.blogId
         })
     }
-    return res.status(500).send({
-        message: "Some error occured while retrieving the blog with blogId" + req.params.blogId
-    })
 })
 
 }
@@ -100,7 +94,7 @@ Blog.findByIdAndUpdate(req.params.blogId, {
 // Deleting the Blog
 
 exports.delete = (req, res) => {
-    Blog.findByIdAndRemove(req.params.blogId)
+    Blog.findOneAndDelete(req.params.blogId)
     .then(oBlog => {
         if(oBlog) {
             res.send({
@@ -116,8 +110,9 @@ exports.delete = (req, res) => {
                 message: "Blog not exist with blogId" + req.params.blogId
             })
         }
-        return res.status(500).send({
+       
+    })
+     return res.status(500).send({
             message: "Some error occured while deleting the blog with blogId" + req.params.blogId
         })
-    })
 }
