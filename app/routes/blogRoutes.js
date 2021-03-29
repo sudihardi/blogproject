@@ -15,4 +15,10 @@ module.exports = (app) => {
 
     // Delete a blog with blogId
     app.delete('/blogs/:blogId', blogs.delete)
+
+    // Get Populer
+    app.get('/populer', blogs.getPopuler)
+
+    // Get home
+    app.get('/home', blogs.getHome)
 }
