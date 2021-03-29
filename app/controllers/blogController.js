@@ -80,7 +80,6 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
 
     try {
-        // const getData = await Blog.getById(req.params.blogId)
         const updateData = await Blog.findByIdAndUpdate({_id: req.params.blogId}, {$inc: {
         mostView: 1}
         }, {new: true})

@@ -5,11 +5,6 @@ exports.getAll = () =>{
     return getData
 }
 
-// exports.getById = () =>{
-//     const findData = Blog.findById(req.params.blogId)
-//     return findData
-// }
-
 exports.getPopuler = () => {
     const getDataPopuler = Blog.find().sort({'-mostView': -1})
     return getDataPopuler
