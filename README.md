@@ -20,6 +20,6 @@ Then you can run this project by:
 
   You can browse the apis at <http://localhost:3000>
 
-  ### NOTE
+  #### NOTE
 
-  I provided mlab db and not use dotev, you are free to use it to develop this project
+  I provided mlab db and not use dotenv, you are free to use it to develop this project
