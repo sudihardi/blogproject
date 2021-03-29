@@ -15,7 +15,7 @@ Then you can run this project by:
 - Using node
 
   ```bash
-  npm start
+  node server.js
   ```
 
   You can browse the apis at <http://localhost:3000>
